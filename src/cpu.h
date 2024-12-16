@@ -9,7 +9,7 @@
 class CPU
 {
 public:
-    static const int NUM_REGISTERS = 4;
+    static const int NUM_REGISTERS = 8;
     static const int MEMORY_SIZE = 1024;
 
     enum class Instruction

@@ -15,7 +15,7 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 run: all
-	./$(EXEC)
+	./$(EXEC) $(PROGRAM_FILE)
 
 clean:
 	rm -rf $(BUILD_DIR)/*.o $(EXEC)

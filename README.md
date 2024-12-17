@@ -67,20 +67,6 @@ exit:
 
 ---
 
-## Contributing 🤝
-
-We would love to have your contributions! Here's how you can help improve this project:
-
-1. Fork this repository 🍴
-2. Create a new branch (`git checkout -b feature-branch`) 🌿
-3. Make your changes and commit them (`git commit -m 'Add a new feature'`) 💡
-4. Push to the branch (`git push origin feature-branch`) 🚀
-5. Open a pull request 📩
-
-Let's build something awesome together! 🙌
-
----
-
 ## License 📜
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.

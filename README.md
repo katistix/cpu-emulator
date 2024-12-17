@@ -57,6 +57,14 @@ exit:
     HALT        ; End of program
 ```
 
+
+## Future Improvements 🚀
+- [ ] Add support for binary and hexadecimal numbers (e.g., `MOV R0 0b1010`, `MOV R1 0x0A`)
+- [ ] Add support for bitwise operations (e.g., `AND`, `OR`, `XOR`, `NOT`, `LSHIFT`, `RSHIFT`)
+- [ ] Add support for memory operations (e.g., `LOAD`, `STORE`)
+- [ ] Add support for function calls and stack operations (e.g., `CALL`, `RET`, `PUSH`, `POP`)
+
+
 ---
 
 ## Contributing 🤝

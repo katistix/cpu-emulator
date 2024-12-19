@@ -19,6 +19,7 @@ private:
     bool first_pass(const std::vector<std::string> &lines);
     bool second_pass(const std::vector<std::string> &lines, std::array<uint32_t, CPU::MEMORY_SIZE> &program);
     size_t getInstructionSize(const std::string &line);
+    int parseImmediate(const std::string &arg);
 
     std::unordered_map<std::string, uint8_t> reg_map = {
         {"R0", 0},

@@ -75,6 +75,40 @@ bool Assembler::first_pass(const std::vector<std::string> &lines)
     return true;
 }
 
+int Assembler::parseImmediate(const std::string &arg)
+{
+    try
+    {
+        // Check if the string is longer than 2 characters and starts with "0x" or "0b"
+        if (arg.size() > 2 && arg[0] == '0')
+        {
+            if (arg[1] == 'x')
+            {
+                // Hexadecimal (base 16)
+                return std::stoi(arg, nullptr, 16);
+            }
+            else if (arg[1] == 'b')
+            {
+                // Binary (base 2)
+                return std::stoi(arg.substr(2), nullptr, 2);
+            }
+        }
+
+        // If not "0x" or "0b", treat it as a decimal (base 10)
+        return std::stoi(arg);
+    }
+    catch (const std::invalid_argument &e)
+    {
+        std::cerr << "Invalid immediate value: " << arg << std::endl;
+        return 0; // Return 0 on error
+    }
+    catch (const std::out_of_range &e)
+    {
+        std::cerr << "Immediate value out of range: " << arg << std::endl;
+        return 0; // Handle cases where the number is out of range for an int
+    }
+}
+
 bool Assembler::second_pass(const std::vector<std::string> &lines, std::array<uint32_t, CPU::MEMORY_SIZE> &program)
 {
     size_t current_address = 0;
@@ -112,8 +146,9 @@ bool Assembler::second_pass(const std::vector<std::string> &lines, std::array<ui
             }
 
             program[current_address++] = static_cast<uint32_t>(CPU::Instruction::MOV_IMM_TO_REG);
-            program[current_address++] = reg_map[arg1];   // Translate register using the map
-            program[current_address++] = std::stoi(arg2); // Immediate value
+            program[current_address++] = reg_map[arg1]; // Translate register using the map
+            // program[current_address++] = std::stoi(arg2); // Immediate value
+            program[current_address++] = parseImmediate(arg2);
         }
         else if (instruction == "MOVR")
         {
